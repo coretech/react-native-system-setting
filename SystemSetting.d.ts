@@ -38,6 +38,7 @@ interface SystemSetting {
   setAppBrightness: (val: number) => Promise<true>;
   grantWriteSettingPremission: () => void;
   getScreenMode: () => Promise<number>;
+  isDialpadToneEnabled: () => Promise<boolean>;
   setScreenMode: (val: number) => Promise<boolean>;
   saveBrightness: () => Promise<void>;
   restoreBrightness: () => number;

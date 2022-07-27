@@ -85,6 +85,13 @@ export default class SystemSetting {
         return -1 // cannot get iOS screen mode
     }
 
+    static async isDialpadToneEnabled() {
+        if (Utils.isAndroid) {
+            return await SystemSettingNative.isDialpadToneEnabled()
+        }
+        return true // cannot get for iOS; always returns true
+    }
+
     static async setScreenMode(val) {
         if (Utils.isAndroid) {
             try {

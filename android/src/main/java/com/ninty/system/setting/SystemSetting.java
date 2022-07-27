@@ -221,6 +221,14 @@ public class SystemSetting extends ReactContextBaseJavaModule implements Activit
     }
 
     @ReactMethod
+    public void isDialpadToneEnabled(Promise promise) {
+        boolean isDTMFToneEnabled = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.DTMF_TONE_WHEN_DIALING, 1) != 0;
+        promise.resolve(isDTMFToneEnabled);
+    }
+
+
+    @ReactMethod
     public void setBrightness(float val, Promise promise) {
         final int brightness = (int) (val * 255);
         checkAndSet(Settings.System.SCREEN_BRIGHTNESS, brightness, promise);
